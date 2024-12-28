@@ -1,4 +1,4 @@
-namespace SchoolManagementSystem.Api
+namespace School.Api
 {
     public class Program
     {
