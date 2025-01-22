@@ -7,17 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Students\Commands\**" />
+    <Compile Remove="Mapping\**" />
+    <EmbeddedResource Remove="Features\Students\Commands\**" />
+    <EmbeddedResource Remove="Mapping\**" />
+    <None Remove="Features\Students\Commands\**" />
+    <None Remove="Mapping\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\School.Data\School.Data.csproj" />
     <ProjectReference Include="..\School.Infrustructure\School.Infrustructure.csproj" />
     <ProjectReference Include="..\School.Service\School.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Students\Commands\Handlers\" />
-    <Folder Include="Features\Students\Commands\Models\" />
-    <Folder Include="Features\Students\Commands\Validatiors\" />
     <Folder Include="Features\Students\Queries\Validatiors\" />
-    <Folder Include="Mapping\" />
   </ItemGroup>
 
   <ItemGroup>
