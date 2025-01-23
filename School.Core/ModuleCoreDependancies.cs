@@ -9,6 +9,10 @@ namespace School.Core
     {
         public static IServiceCollection AddCoreDependancies(this IServiceCollection services)
         {
+            //AutoMapper Config
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            // MediatR Config
             services.AddMediatR(cfg 
                 => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             return services;
