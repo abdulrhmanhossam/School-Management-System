@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Mapping\**" />
-    <EmbeddedResource Remove="Mapping\**" />
-    <None Remove="Mapping\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\School.Data\School.Data.csproj" />
     <ProjectReference Include="..\School.Infrustructure\School.Infrustructure.csproj" />
     <ProjectReference Include="..\School.Service\School.Service.csproj" />
@@ -27,6 +21,7 @@
     <Folder Include="Features\Students\Commands\Handlers\" />
     <Folder Include="Features\Students\Commands\Models\" />
     <Folder Include="Features\Students\Commands\Validatiors\" />
+    <Folder Include="Mapping\Students\CommandMapping\" />
   </ItemGroup>
 
 </Project>
