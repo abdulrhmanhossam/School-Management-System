@@ -1,9 +1,8 @@
 ﻿using School.Data.Entities;
 
-namespace School.Service.Abstracts
+namespace School.Service.Abstracts;
+
+public interface IStudentService
 {
-    public interface IStudentService
-    {
-        Task<List<Student>> GetStudentsListAsync();
-    }
+    Task<List<Student>> GetStudentsListAsync();
 }

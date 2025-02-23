@@ -3,18 +3,17 @@ using School.Data.Entities;
 using School.Infrustructure.Abstract;
 using School.Infrustructure.Data;
 
-namespace School.Infrustructure.Repositories
+namespace School.Infrustructure.Repositories;
+
+public class StudentRepository : IStudentRepository
 {
-    public class StudentRepository : IStudentRepository
+    private readonly AppDbContext _dbContext;
+    public StudentRepository(AppDbContext dbContext)
     {
-        private readonly AppDbContext _dbContext;
-        public StudentRepository(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-        public async Task<List<Student>> GetStudentsListAsync()
-        {
-            return await _dbContext.Students.Include(x => x.Department).ToListAsync();
-        }
+        _dbContext = dbContext;
+    }
+    public async Task<List<Student>> GetStudentsListAsync()
+    {
+        return await _dbContext.Students.Include(x => x.Department).ToListAsync();
     }
 }

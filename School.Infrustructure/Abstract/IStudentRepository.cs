@@ -1,9 +1,8 @@
 ﻿using School.Data.Entities;
 
-namespace School.Infrustructure.Abstract
+namespace School.Infrustructure.Abstract;
+
+public interface IStudentRepository
 {
-    public interface IStudentRepository
-    {
-        Task<List<Student>> GetStudentsListAsync();
-    }
+    Task<List<Student>> GetStudentsListAsync();
 }

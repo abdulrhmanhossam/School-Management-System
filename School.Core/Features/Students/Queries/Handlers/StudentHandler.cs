@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
+using School.Core.Bases;
 using School.Core.Features.Students.Queries.Models;
 using School.Core.Features.Students.Queries.Responses;
 using School.Service.Abstracts;
 
 namespace School.Core.Features.Students.Queries.Handlers
 {
-    public class StudentHandler : IRequestHandler<GetStudentListQuery, List<GetStudentListResponse>>
+    public class StudentHandler : ResponseHandler, IRequestHandler<GetStudentListQuery,Response<List<GetStudentListResponse>>>
     {
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
@@ -17,12 +18,12 @@ namespace School.Core.Features.Students.Queries.Handlers
             _mapper = mapper;
         }
 
-        public async Task<List<GetStudentListResponse>> Handle(GetStudentListQuery request,
+        public async Task<Response<List<GetStudentListResponse>>> Handle(GetStudentListQuery request,
             CancellationToken cancellationToken)
         {
             var studentList = await _studentService.GetStudentsListAsync();
             var studentListMapper = _mapper.Map<List<GetStudentListResponse>>(studentList);
-            return studentListMapper;
+            return Success(studentListMapper);
         }
     }
 }
