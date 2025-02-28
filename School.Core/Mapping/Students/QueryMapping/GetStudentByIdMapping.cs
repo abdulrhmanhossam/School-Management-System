@@ -5,10 +5,10 @@ namespace School.Core.Mapping.Students;
 
 public partial class StudentProfile
 {
-    public void GetStudentListMapping()
+    public void GetStudentByIdMapping()
     {
 
-        CreateMap<Student, GetStudentListResponse>()
+        CreateMap<Student, GetSingleStudentResponse>()
             .ForMember(dest => dest.DepartmentName, opt
             => opt.MapFrom(src => src.Department.DepartmentName));
     }
