@@ -8,6 +8,7 @@ namespace School.Core.Mapping.Students
         {
             GetStudentListMapping();
             GetStudentByIdMapping();
+            AddStudentCommadMapping();
         }
     }
 }
