@@ -28,4 +28,20 @@ public class StudentService : IStudentService
     {
         return await _studentRepository.GetStudentsListAsync();
     }
+
+    public async Task<string> AddAsync(Student newStudent)
+    {
+        var dbStudent = _studentRepository
+            .GetTableNoTracking()
+            .Where(x => x.Name.Equals(newStudent.Name))
+            .FirstOrDefault();
+
+        if (dbStudent is not null)
+            return "Exist";
+
+        await _studentRepository.AddAsync(newStudent);
+        await _studentRepository.SaveChangeAsync();
+
+        return "Success";
+    }
 }
