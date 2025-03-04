@@ -40,7 +40,6 @@ public class StudentService : IStudentService
             return "Exist";
 
         await _studentRepository.AddAsync(newStudent);
-        await _studentRepository.SaveChangeAsync();
 
         return "Success";
     }

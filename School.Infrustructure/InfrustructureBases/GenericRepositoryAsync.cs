@@ -15,8 +15,10 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
 
     public virtual async Task<T> GetByIdAsync(int id)
     {
+#pragma warning disable CS8603 // Possible null reference return.
         return await _dbContext.Set<T>()
             .FindAsync(id);
+#pragma warning restore CS8603 // Possible null reference return.
     }
     public IQueryable<T> GetTableNoTracking()
     {
@@ -28,12 +30,12 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
         await _dbContext.Set<T>().AddRangeAsync(entities);
         await _dbContext.SaveChangesAsync();
     }
-    
+
     public virtual async Task<T> AddAsync(T entity)
     {
         await _dbContext.Set<T>().AddAsync(entity);
         await _dbContext.SaveChangesAsync();
-        
+
         return entity;
     }
 
@@ -72,7 +74,7 @@ public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : cl
     {
         _dbContext.Database.CommitTransaction();
     }
-    
+
     public void RollBack()
     {
         _dbContext.Database.RollbackTransaction();
