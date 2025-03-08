@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using School.Core.Behaviors;
 using System.Reflection;
 
 namespace School.Core
@@ -12,7 +15,17 @@ namespace School.Core
 
             // MediatR Config
             services.AddMediatR(cfg
-                => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+                => cfg.RegisterServicesFromAssemblies(Assembly
+                .GetExecutingAssembly()));
+
+            // Validator Config
+            services.AddValidatorsFromAssembly(Assembly
+                .GetExecutingAssembly());
+
+            services.AddTransient(
+                typeof(IPipelineBehavior<,>),
+                typeof(ValidationBehavior<,>));
+
             return services;
         }
     }

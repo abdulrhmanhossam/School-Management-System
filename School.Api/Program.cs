@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using School.Infrustructure.Abstract;
-using School.Infrustructure.Data;
-using School.Infrustructure.Repositories;
-using School.Infrustructure;
-using School.Service;
 using School.Core;
+using School.Core.Middleware;
+using School.Infrustructure;
+using School.Infrustructure.Data;
+using School.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
